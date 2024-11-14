@@ -1,6 +1,8 @@
 #Create React App
-#TailWind CSS
-#Formik 
+#TailWind CSS setup
+#Login / sign up page
+#Form Validation(can use formik for this)
+#Firebase setup and hosting done
 
 #Structure
 - Login page

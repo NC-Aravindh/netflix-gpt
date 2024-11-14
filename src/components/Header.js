@@ -11,7 +11,7 @@ const Header = () => {
                 src={NETFLIX_LOGO_URL} alt='netflix-logo'></img>
             <div className='relative group'>
                 <img className='w-full h-auto' src={LOGIN_BG_URL} alt='login-bg-img'></img>
-                <div class="absolute inset-0 bg-black opacity-50"></div>
+                <div className="absolute inset-0 bg-black opacity-50"></div>
             </div>
         </div>
     )
