@@ -1,12 +1,25 @@
 import React from 'react'
 import Login from './Login'
-import Header from './Header'
+import {createBrowserRouter,RouterProvider} from "react-router-dom";
+import Browse from './Browse';
 
 const Body = () => {
+    const router = createBrowserRouter([
+        {
+          path:'/',
+          element:<Login/>
+        },
+        {
+      
+          path:'/browse',
+          element:<Browse/>
+          
+        }
+      ])
+      
   return (
     <div>
-        <Header/>
-        <Login/>
+        <RouterProvider router={router} />
     </div>
   )
 }
