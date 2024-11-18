@@ -1,9 +1,19 @@
-import React from 'react'
-
+import React from "react";
+import Header from "./Header";
+import useNowPlayingMovies from "../utils/useNowPlayingMovies";
+import FirstContainer from "./FirstContainer";
+import SecondContainer from './SecondContainer'
 const Browse = () => {
-  return (
-    <div>Browse</div>
-  )
-}
 
-export default Browse
+  useNowPlayingMovies();
+
+  return (
+    <div>
+      <Header />
+      <FirstContainer/>
+      <SecondContainer/>
+    </div>
+  );
+};
+
+export default Browse;
