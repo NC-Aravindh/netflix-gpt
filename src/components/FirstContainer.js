@@ -7,7 +7,7 @@ const FirstContainer = () => {
   const movieList = useSelector((store) => store.movie?.nowPlayingMovies);
 
   if (!movieList) return;
-  const trailerMovie = movieList[Math.floor(Math.random() * 10)];
+  const trailerMovie = movieList[5];
 
   return (
     <div>

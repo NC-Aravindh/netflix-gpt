@@ -49,7 +49,6 @@ const Login = () => {
             .then(() => {
               //Profile updated
               const { displayName, email, photoURL, uid } = auth.currentUser;
-              console.log("bodypage-1");
               dispatch(
                 addUser({
                   uid: uid,

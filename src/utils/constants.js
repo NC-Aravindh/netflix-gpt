@@ -2,12 +2,18 @@ export const NETFLIX_LOGO_URL = "https://cdn.cookielaw.org/logos/dd6b162f-1a32-4
 
 export const LOGIN_BG_URL = "https://assets.nflxext.com/ffe/siteui/vlv3/03ad76d1-e184-4d99-ae7d-708672fa1ac2/web/IN-en-20241111-TRIFECTA-perspective_149877ab-fcbd-4e4f-a885-8d6174a1ee81_small.jpg"
 
-export const USER_LOGIN_ICON = "https://www.google.com/imgres?q=cats&imgurl=https%3A%2F%2Fi.natgeofe.com%2Fn%2F548467d8-c5f1-4551-9f58-6817a8d2c45e%2FNationalGeographic_2572187_3x4.jpg&imgrefurl=https%3A%2F%2Fwww.nationalgeographic.com%2Fanimals%2Fmammals%2Ffacts%2Fdomestic-cat&docid=K6Qd9XWnQFQCoM&tbnid=H4qVWYbvIIAtvM&vet=12ahUKEwjdief48eSJAxVGka8BHbNoE5EQM3oECBYQAA..i&w=2304&h=3072&hcb=2&itg=1&ved=2ahUKEwjdief48eSJAxVGka8BHbNoE5EQM3oECBYQAA"
+export const USER_LOGIN_ICON = "https://cdn.pixabay.com/photo/2017/09/25/13/12/puppy-2785074_1280.jpg"
 
 export const MOVIE_API_OPTIONS = {
     method: 'GET',
     headers: {
       accept: 'application/json',
-      Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJlYWUzODFkYjZhODNlMzMzMTE5ODM3MzBiOWU3Yjg2OSIsIm5iZiI6MTczMTg5ODIwNy44NDUzNTA1LCJzdWIiOiI2NzNhYTkwZjI4MWFjOTcyZWE0NGUzOWMiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.PSgbE8HsM6IktLhD8USg8NHt56IVUHhhXGOoHMeoSo8'
+      Authorization: 'Bearer '+ process.env.REACT_APP_TMDB_ACCESS_TOKEN
     }
   };
+
+  export const TMDB_BASE_IMAGE_URL = "https://image.tmdb.org/t/p/w300/"
+
+  export const TMDB_MOVIE_LIST_BASE_URL = "https://api.themoviedb.org/3/movie/"
+
+  export const OPENAI_KEY = process.env.REACT_APP_OPENAI_KEY

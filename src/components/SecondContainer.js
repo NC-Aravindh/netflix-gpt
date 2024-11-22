@@ -1,9 +1,43 @@
-import React from 'react'
+import React from "react";
+import MovieListContainer from "./MovieListContainer";
+import { useSelector } from "react-redux";
 
 const SecondContainer = () => {
-  return (
-    <div>SecondContainer</div>
-  )
-}
+  //get the upcoming movies using API --> fetch the ids ---> fetch the images
+  const upComingMovieList = useSelector((store) => store.movie?.upComingMovies);
+  const nowPlayingMovieList = useSelector(
+    (store) => store.movie?.nowPlayingMovies
+  );
+  const topRatedMovieList = useSelector((store) => store.movie?.topRatedMovies);
+  const popularMovieList = useSelector((store) => store.movie?.popularMovies);
 
-export default SecondContainer
+  return (
+    <div className="bg-black w-screen">
+      <div className="-mt-56 relative z-40">
+        {upComingMovieList && (
+          <MovieListContainer
+            title="Upcoming Movies"
+            movieList={upComingMovieList}
+          />
+        )}
+        {nowPlayingMovieList && (
+          <MovieListContainer
+            title="Now Playing"
+            movieList={nowPlayingMovieList}
+          />
+        )}
+        {topRatedMovieList && (
+          <MovieListContainer title="Top-Rated" movieList={topRatedMovieList} />
+        )}
+        {popularMovieList && (
+          <MovieListContainer
+            title="Popular Movies"
+            movieList={popularMovieList}
+          />
+        )}
+      </div>
+    </div>
+  );
+};
+
+export default SecondContainer;
