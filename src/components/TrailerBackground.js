@@ -6,7 +6,7 @@ const TrailerBackground = ({ movieId }) => {
   const trailer = useMoveieTrailer(movieId);
 
   return (
-    <div className="w-screen">
+    <div className="w-full">
       <iframe
         className="w-full aspect-video"
         src={

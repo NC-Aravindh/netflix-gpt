@@ -53,7 +53,7 @@ const isGptSearchEnabled = useSelector((store) => store.gpt.enableGptSearch);
 
   //The second div has overlay effects
   return (
-    <div className="top-0 absolute z-50 bg-gradient-to-b from-black w-full h-20 flex justify-between">
+    <div className="top-0 absolute z-40 bg-gradient-to-b from-black w-full h-20 flex justify-between">
       <img
         className=" w-[10em] left-[8em] "
         src={NETFLIX_LOGO_URL}

@@ -4,8 +4,13 @@ import useMovieLists from "../utils/useMovieLists";
 import FirstContainer from "./FirstContainer";
 import SecondContainer from "./SecondContainer";
 import { useSelector } from "react-redux";
-import GptSearchPage from "./GptSearchPage";
+import { lazy, Suspense } from "react";
+import MoviePage from "./MoviePage";
+
+const GptSearchPage = lazy(() => import("./GptSearchPage"));
 const Browse = () => {
+  const moviePage = useSelector((store) => store.movie.moviePage);
+  const { title, rating, movieId, overview } = moviePage;
   useMovieLists("now_playing");
   useMovieLists("upcoming");
   useMovieLists("top_rated");
@@ -14,14 +19,24 @@ const Browse = () => {
   const isGptSearchEnabled = useSelector((store) => store.gpt.enableGptSearch);
 
   return (
-    <div>
+    <div className="box-border">
       <Header />
       {isGptSearchEnabled ? (
-        <GptSearchPage />
+        <Suspense fallback={<h1>Loading...</h1>}>
+          <GptSearchPage />
+        </Suspense>
       ) : (
         <>
           <FirstContainer />
-          <SecondContainer />
+          <SecondContainer />+{" "}
+          {moviePage.isClicked && (
+            <MoviePage
+              movieId={movieId}
+              title={title}
+              overview={overview}
+              rating={rating}
+            />
+          )}
         </>
       )}
     </div>

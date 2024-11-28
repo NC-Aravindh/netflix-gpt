@@ -1,7 +1,6 @@
 import React from "react";
 import MovieCard from "./MovieCard";
 
-
 const MovieListContainer = ({ title, movieList }) => {
   return (
     <div className="py-6 pl-12 text-white">
@@ -9,10 +8,19 @@ const MovieListContainer = ({ title, movieList }) => {
         <h1 className="font-bold text-xl">{title}</h1>
       </div>
       <div className="flex gap-2">
-        <div className="flex overflow-scroll gap-4">
+        <div className="flex overflow-scroll scrollbar-hide gap-4">
           {movieList?.map((movie) => {
-            
-            return <MovieCard key={movie.id} poster_path={movie.poster_path} />;
+            return (
+              <MovieCard
+                key={movie.id}
+                movieId={movie.id}
+                title={movie.title}
+                overview={movie.overview}
+                rating={movie.vote_average}
+                posterPath={movie.poster_path}
+                poster_path={movie.poster_path}
+              />
+            );
           })}
         </div>
       </div>

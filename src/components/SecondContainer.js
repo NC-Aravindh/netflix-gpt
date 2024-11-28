@@ -13,7 +13,7 @@ const SecondContainer = () => {
 
   return (
     <div className="bg-black w-screen">
-      <div className="-mt-56 relative z-40">
+      <div className="-mt-56 relative z-30">
         {upComingMovieList && (
           <MovieListContainer
             title="Upcoming Movies"
