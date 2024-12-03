@@ -1,13 +1,12 @@
 import React from "react";
 import Login from "./Login";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import { useDispatch } from "react-redux";
 import { lazy, Suspense } from "react";
+import ProfilePicPage from "./ProfilePicPage";
 
 const Browse = lazy(() => import("./Browse"));
 
 const Body = () => {
-  const dispatch = useDispatch();
   const router = createBrowserRouter([
     {
       path: "/",
@@ -21,9 +20,11 @@ const Body = () => {
         </Suspense>
       ),
     },
+    {
+      path:'/profile',
+      element: <ProfilePicPage/>
+    }
   ]);
-
-  //User signup, signin ,signout .. Auth state changes
 
   return (
     <div>

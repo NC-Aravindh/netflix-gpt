@@ -11,7 +11,7 @@ import { TMDB_MOVIE_LIST_BASE_URL } from "./constants";
 
 const useMovieLists = (movieListType) => {
   const dispatch = useDispatch();
-  const getNowPlayingMovies = async () => {
+  const getMovies = async () => {
     const fetch_url = TMDB_MOVIE_LIST_BASE_URL + movieListType;
     try {
       const data = await fetch(fetch_url, MOVIE_API_OPTIONS);
@@ -30,7 +30,7 @@ const useMovieLists = (movieListType) => {
   };
 
   useEffect(() => {
-    getNowPlayingMovies();
+    getMovies();
   }, []);
 };
 

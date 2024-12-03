@@ -9,11 +9,10 @@ import {
 import { auth } from "../utils/firebase.js";
 import { useDispatch } from "react-redux";
 import { addUser } from "../utils/userSlice.js";
-import { LOGIN_BG_URL, USER_LOGIN_ICON } from "../utils/constants.js";
+import { LOGIN_BG_URL } from "../utils/constants.js";
 
 const Login = () => {
   const dispatch = useDispatch();
-
   const [isSignUpform, setSignupForm] = useState(false);
   const [errorMsg, setErrorMsg] = useState(null);
 
@@ -44,7 +43,6 @@ const Login = () => {
           const user = userCredential.user;
           updateProfile(user, {
             displayName: name?.current?.value,
-            photoURL: USER_LOGIN_ICON,
           })
             .then(() => {
               //Profile updated
@@ -65,7 +63,7 @@ const Login = () => {
         })
         .catch((error) => {
           const { code, message } = error;
-          setErrorMsg(message);
+          setErrorMsg(code + "-" + message);
         });
     }
     //SIGN IN FORM
@@ -77,7 +75,7 @@ const Login = () => {
       )
         .then((userCredential) => {
           // Signed in
-          const user = userCredential.user;
+          
         })
         .catch((error) => {
           const { code, message } = error;

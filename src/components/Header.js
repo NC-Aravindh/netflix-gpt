@@ -5,7 +5,7 @@ import { NETFLIX_LOGO_URL } from "../utils/constants";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-import { addUser, removeUser } from "../utils/userSlice";
+import { addUser, removeUser , setUserProfile } from "../utils/userSlice";
 import { onAuthStateChanged } from "firebase/auth";
 import { setGptSearch } from "../utils/gptSlice";
 
@@ -13,7 +13,7 @@ const Header = () => {
   const user = useSelector((store) => store.user);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
+  
   const handleSignOut = () => {
     signOut(auth)
       .then(() => {})
@@ -22,6 +22,7 @@ const Header = () => {
       });
   };
 
+  //User signup, signin ,signout .. Auth state changes
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
@@ -34,7 +35,11 @@ const Header = () => {
             photoURL: photoURL,
           })
         );
-        navigate("/browse");
+        if (photoURL) {
+          navigate("/browse");
+        } else {
+          navigate("/profile");
+        }
       } else {
         dispatch(removeUser());
         navigate("/");
@@ -45,11 +50,11 @@ const Header = () => {
     return () => unsubscribe();
   }, []);
 
-function handleGptSearch(){
-  dispatch(setGptSearch());
-}
+  function handleGptSearch() {
+    dispatch(setGptSearch());
+  }
 
-const isGptSearchEnabled = useSelector((store) => store.gpt.enableGptSearch);
+  const isGptSearchEnabled = useSelector((store) => store.gpt.enableGptSearch);
 
   //The second div has overlay effects
   return (
@@ -59,22 +64,23 @@ const isGptSearchEnabled = useSelector((store) => store.gpt.enableGptSearch);
         src={NETFLIX_LOGO_URL}
         alt="netflix-logo"
       ></img>
-      {user && (
+      {user?.userInfo && (
         <div className="flex justify-evenly items-center gap-2">
-          {/* <h1 className="text-white">{user?.displayName}</h1> */}
-          <button 
-          onClick={handleGptSearch}
-          className="bg-red-700 p-4 rounded-lg text-white mr-4 hover:bg-red-600 ease-in">
-            {isGptSearchEnabled ?"Homepage" :"GPT-Search"}
+          <button
+            onClick={handleGptSearch}
+            className="bg-red-600 p-4 rounded-lg text-white mr-4 hover:bg-red-700 transition ease-in"
+          >
+            {isGptSearchEnabled ? "Homepage" : "GPT-Search"}
           </button>
           <img
-            className="w-16 h-16 rounded-full"
-            src={user?.photoURL}
+            onClick={()=>dispatch(setUserProfile())}
+            className="w-16 h-16 rounded-full cursor-pointer"
+            src={user?.userInfo.photoURL}
             alt="user-icon"
           ></img>
           <button
             onClick={handleSignOut}
-            className="text-white font-bold text-xl hover:underline ease-in w-fit h-fit"
+            className="text-white font-bold text-xl transition duration-300 hover:text-red-700 ease-in w-fit h-fit mr-4 ml-4 "
           >
             {" "}
             Sign out
