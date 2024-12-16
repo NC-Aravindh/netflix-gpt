@@ -12,8 +12,8 @@ const SecondContainer = () => {
   const popularMovieList = useSelector((store) => store.movie?.popularMovies);
 
   return (
-    <div className="bg-black w-full">
-      <div className="-mt-56 relative z-30">
+    <div className=" md:mt-0 bg-black w-full">
+      <div className=" md:-mt-6 lg:-mt-24 xl:-mt-56 max-512:pt-80 md:relative z-30">
         {upComingMovieList && (
           <MovieListContainer
             title="Upcoming Movies"

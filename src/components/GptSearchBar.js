@@ -39,21 +39,22 @@ const GptSearchBar = () => {
 
     const tmdbResults = await Promise.all(promiseArray);
     dispatch(addGptMovieResults(tmdbResults));
+    userInput.current.value = ""
   }
   return (
-    <div className="pt-36 w-[50%] text-center mx-auto">
+    <div className="pt-36 max-512:w-[95%] w-[70%] lg:w-[50%] text-center mx-auto">
       <form
-        className="grid grid-cols-12 gap-4 bg-black p-4 rounded-md"
+        className="grid grid-cols-12 gap-4 bg-black p-4 rounded-md lg::h-[88px]"
         onSubmit={(e) => e.preventDefault()}
       >
         <input
-          className="col-span-9 rounded-lg p-4"
+          className="col-span-9 rounded-lg h-9 md:h-10 lg:h-14 md:p-4 max-512:text-xs"
           ref={userInput}
           placeholder=" What movies you want to explore?"
         ></input>
         <button
           onClick={handleGptSearch}
-          className="bg-red-700 col-span-3 p-4 rounded-lg text-white mr-4 hover:bg-red-600 ease-in"
+          className="bg-red-700 col-span-3 md:h-10 lg:h-14 lg:p-4 rounded-lg max-512:text-sm text-white md:mr-4 hover:bg-red-600 ease-in"
         >
           Search
         </button>

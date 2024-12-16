@@ -1,5 +1,4 @@
 import React from "react";
-import Header from "./Header";
 import useMovieLists from "../utils/useMovieLists";
 import FirstContainer from "./FirstContainer";
 import SecondContainer from "./SecondContainer";
@@ -26,7 +25,6 @@ const Browse = () => {
 
   return (
     <div className="box-border">
-      <Header />
       {isGptSearchEnabled ? (
         <Suspense fallback={<h1>Loading...</h1>}>
           <GptSearchPage />

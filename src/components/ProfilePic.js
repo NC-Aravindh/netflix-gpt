@@ -2,7 +2,7 @@ import React from "react";
 
 const ProfilePic = ({ imgURL, handleClick }) => {
   return (
-    <div className="w-[13em] h-[13em] ">
+    <div className="w-[7em] h-[7em] md:w-[10em] md:h-[10em] lg:w-[13em] lg:h-[13em] ">
       <img
         key={imgURL}
         onClick={handleClick}
