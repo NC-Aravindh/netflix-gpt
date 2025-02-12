@@ -106,6 +106,7 @@ const Login = () => {
             type="text"
             name="username"
             placeholder="Full Name"
+            autoComplete="off"
           ></input>
         )}
         <input
